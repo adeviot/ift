@@ -34,6 +34,27 @@ String ift::explode(String data, String separator, int index)
     return explode(data, separator.charAt(0), index);
 }
 
+String ift::explode(const char *data, char separator, int index)
+{
+    int found = 0;
+    int strIndex[] = {0, -1};
+    int maxIndex = data.length() - 1;
+
+    for (int i = 0; i <= maxIndex && found <= index; i++)
+    {
+        if (data.charAt(i) == separator || i == maxIndex)
+        {
+            found++;
+            strIndex[0] = strIndex[1] + 1;
+            strIndex[1] = (i == maxIndex) ? i + 1 : i;
+        }
+    }
+    return found > index ? data.substring(strIndex[0], strIndex[1]) : "";
+}
+
+
+
+
 /*!
 *  @section Tools -> Convert : ip to String
 *  @brief  ip2string(IPAddress address)
@@ -74,19 +95,18 @@ void ift::string2ip(byte *addr, String ipStr)
     }
 }
 
-IPAddress str2IP(String str) {
+IPAddress ift::string2ip(String str) {
 
-    IPAddress ret( this.explode(str,'.',0).toInt(),getIpBlock(1,str),getIpBlock(2,str),getIpBlock(3,str) );
+    IPAddress ret(explode(str,'.',0).toInt(),explode(str,'.',1).toInt(),explode(str,'.',2).toInt(),explode(str,'.',3).toInt() );
     return ret;
 }
-IPAddress str2IP(String str) {
+IPAddress ift::string2ip(const char *str) {
 
-    IPAddress ret( getIpBlock(0,str),getIpBlock(1,str),getIpBlock(2,str),getIpBlock(3,str) );
+    IPAddress ret(explode(str,'.',0).toInt(),explode(str,'.',1).toInt(),explode(str,'.',2).toInt(),explode(str,'.',3).toInt() );
     return ret;
-
 }
 
 
-}
+
 
 #endif // _IFT_TOOLS_IMPL_H_
