@@ -1,7 +1,10 @@
+#pragma once
+
 #ifndef _IFT_TOOLS_H_
 #define _IFT_TOOLS_H_
 
-#include "Arduino.h"
+#include <Arduino.h>
+#include <IPAddress.h>
 
 class ift
 {
