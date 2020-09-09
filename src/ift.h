@@ -16,8 +16,11 @@ public:
 
     /*convert*/
     String ip2string(IPAddress address);
-    String ip2string(IPAddress address, String &ret);
-    
+    void ip2string(IPAddress address, String &ret);
+
+    void string2ip(byte *addr, String ipStr);
+    IPAddress string2ip(String str);
+    IPAddress string2ip(const char *str);
 };
 
 #endif // _IFT_TOOLS_H_2
