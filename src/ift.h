@@ -17,4 +17,4 @@ public:
     
 };
 
-#endif // _IFT_TOOLS_H_
+#endif // _IFT_TOOLS_H_2
