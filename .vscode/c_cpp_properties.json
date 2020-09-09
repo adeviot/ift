@@ -3,16 +3,10 @@
         {
             "name": "Win32",
             "includePath": [
+                "${workspaceFolder}/**",
                 "C:\\Program Files (x86)\\Arduino\\tools\\**",
                 "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\**",
-                "C:\\Users\\adevi\\AppData\\Local\\Arduino15\\packages\\STM32\\tools\\**",
-                //"C:\\Users\\adevi\\AppData\\Local\\Arduino15\\packages\\STM32\\hardware\\stm32\\1.8.0\\**",
-                "C:\\Users\\adevi\\AppData\\Local\\Arduino15\\packages\\esp8266\\tools\\**",
-                "C:\\Users\\adevi\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.6.3\\**",
-                "C:\\Users\\adevi\\OneDrive\\Documents\\Arduino\\libraries\\**",
-                "C:\\Users\\adevi\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\1.0.4\\**",
-                "C:\\Users\\adevi\\AppData\\Local\\Arduino15\\packages\\esp32\\tools\\**",
-                "C:\\Users\\adevi\\AppData\\Local\\Arduino15\\packages\\STM32\\hardware\\stm32\\1.9.0\\**"
+                "C:\\Users\\adevi\\OneDrive\\Documents\\Arduino\\libraries\\**"
             ],
             "forcedInclude": [
                 "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\cores\\arduino\\Arduino.h",
