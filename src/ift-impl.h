@@ -48,12 +48,45 @@ String ift::ip2string(IPAddress address)
            String(address[3]);
 }
 
-String ift::ip2string(IPAddress address,String &ret)
+void ift::ip2string(IPAddress address, String &ret)
 {
-    ret =  String(address[0]) + "." +
-           String(address[1]) + "." +
-           String(address[2]) + "." +
-           String(address[3]);
+    ret = String(address[0]) + "." +
+          String(address[1]) + "." +
+          String(address[2]) + "." +
+          String(address[3]);
+}
+
+void ift::string2ip(byte *addr, String ipStr)
+{
+    if (ipStr == "")
+        return;
+
+    IPAddress ip;
+    bool i;
+
+    i = ip.fromString(ipStr);
+    if (i)
+    {
+        for (int a = 0; a < 4; a++)
+        {
+            addr[a] = ip[a];
+        }
+    }
+}
+
+IPAddress str2IP(String str) {
+
+    IPAddress ret( this.explode(str,'.',0).toInt(),getIpBlock(1,str),getIpBlock(2,str),getIpBlock(3,str) );
+    return ret;
+}
+IPAddress str2IP(String str) {
+
+    IPAddress ret( getIpBlock(0,str),getIpBlock(1,str),getIpBlock(2,str),getIpBlock(3,str) );
+    return ret;
+
+}
+
+
 }
 
 #endif // _IFT_TOOLS_IMPL_H_
