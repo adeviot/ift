@@ -1,14 +1,14 @@
 #ifndef _IFT_TOOLS_IMPL_H_
 #define _IFT_TOOLS_IMPL_H_
+
 #include <ift.h>
 
-
 /*!
-*  @brief  Explode String
+*  @brief  Tools : Explode String
 *  @param  data message
-*  @param  data separator
-*  @param  data index
-*  @return String
+*  @param  separator separator
+*  @param  index index
+*  @return String "" will always be returned
 */
 String ift::explode(String data, char separator, int index)
 {
@@ -28,10 +28,27 @@ String ift::explode(String data, char separator, int index)
     return found > index ? data.substring(strIndex[0], strIndex[1]) : "";
 }
 
-String ift::explode(String data, String separator, int index){
-    return explode(data, str.charAt(0),index);
+/*!
+* @copydoc ift::explode(String, char, int)
+*/
+String ift::explode(String data, String separator, int index)
+{
+    return explode(data, separator.charAt(0), index);
 }
 
 
+/*!
+*  @section Tools -> Convert : ip to String
+*  @brief  ip2string(IPAddress address)
+*  @param  address IPAddress
+*  @return String
+*/
+String ift::ip2string(IPAddress address)
+{
+    return String(address[0]) + "." +
+           String(address[1]) + "." +
+           String(address[2]) + "." +
+           String(address[3]);
+}
 
 #endif // _IFT_TOOLS_IMPL_H_
