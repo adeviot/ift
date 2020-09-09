@@ -28,14 +28,11 @@ String ift::explode(String data, char separator, int index)
     return found > index ? data.substring(strIndex[0], strIndex[1]) : "";
 }
 
-/*!
-* @copydoc ift::explode(String, char, int)
-*/
+//! @copydoc ift::explode()(String, char, int)
 String ift::explode(String data, String separator, int index)
 {
     return explode(data, separator.charAt(0), index);
 }
-
 
 /*!
 *  @section Tools -> Convert : ip to String
@@ -46,6 +43,14 @@ String ift::explode(String data, String separator, int index)
 String ift::ip2string(IPAddress address)
 {
     return String(address[0]) + "." +
+           String(address[1]) + "." +
+           String(address[2]) + "." +
+           String(address[3]);
+}
+
+String ift::ip2string(IPAddress address,String &ret)
+{
+    ret =  String(address[0]) + "." +
            String(address[1]) + "." +
            String(address[2]) + "." +
            String(address[3]);
