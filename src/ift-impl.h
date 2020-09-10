@@ -98,20 +98,24 @@ IPAddress ift::string2ip(String str)
     IPAddress ret(explode(str, '.', 0).toInt(), explode(str, '.', 1).toInt(), explode(str, '.', 2).toInt(), explode(str, '.', 3).toInt());
     return ret;
 }
-
+/*!
+*  @section Tools -> Convert : String to IPV4
+*  @brief  IPAddress string2ip(const char *str)
+*  @param  str const char value IP Address
+*  @return IPAddress
+*/
 IPAddress ift::string2ip(const char *str)
 {
     return string2ip(String(str));
 }
 
-
 /*!
 *  @section Tools -> URL Decode
 *  @brief  String urlDecode(String &str)
 *  @param  str String value
-*  @return String
+*  @return String 
 */
-String urlDecode(String &str)
+String ift::urlDecode(String &str)
 {
     char temp[] = "0x00";
     unsigned int len = text.length();
@@ -147,7 +151,7 @@ String urlDecode(String &str)
 *  @param  str String value
 *  @return String
 */
-String urlEncode(String &str)
+String ift::urlEncode(String &str)
 {
     String encodedString = "";
     char c;
@@ -184,9 +188,99 @@ String urlEncode(String &str)
             encodedString += code1;
             //encodedString+=code2;
         }
-        yield();
     }
     return encodedString;
+}
+
+/*!
+*  @section Tools -> URL Encode
+*  @brief  String urlEncode(String &str)
+*  @param  str String value Unicode
+*  @return String UTF8
+*/
+String ift::UnicodeToUTF8(String &str)
+{
+    unsigned int len = str.length() * 3;
+    int i = 0, j = 0;
+    char out[len];
+    while (str[i])
+    {
+        unsigned char c = str[i];
+        if (c >= 0xA0)
+        {
+            out[j] = 0xE0;
+            j++;
+            if (c >= 0xE0)
+            {
+                out[j] = 0xB9;
+                j++;
+                out[j] = c - 0x60;
+                j++;
+            }
+            else
+            {
+                out[j] = 0xB8;
+                j++;
+                out[j] = c - 0x20;
+                j++;
+            }
+        }
+        else
+        {
+            out[j] = c;
+            j++;
+        }
+
+        i++;
+    }
+    out[j] = 0;
+    return (String(out));
+}
+
+/*!
+*  @section Tools -> URL Encode
+*  @brief  String urlEncode(String &str)
+*  @param  str String value Unicode
+*  @return String UTF8
+*/
+void ift::UnicodeToUTF8(String &str, String &ret)
+{
+    unsigned int len = str.length() * 3;
+    int i = 0, j = 0;
+    char out[len];
+    while (str[i])
+    {
+        unsigned char c = str[i];
+        if (c >= 0xA0)
+        {
+            out[j] = 0xE0;
+            j++;
+            if (c >= 0xE0)
+            {
+                out[j] = 0xB9;
+                j++;
+                out[j] = c - 0x60;
+                j++;
+            }
+            else
+            {
+                out[j] = 0xB8;
+                j++;
+                out[j] = c - 0x20;
+                j++;
+            }
+        }
+        else
+        {
+            out[j] = c;
+            j++;
+        }
+
+        i++;
+    }
+    out[j] = 0;
+    ret = String(out);
+    return;
 }
 
 #endif // _IFT_TOOLS_IMPL_H_
