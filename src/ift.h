@@ -21,6 +21,9 @@ public:
     void string2ip(byte *addr, String ipStr);
     IPAddress string2ip(String str);
     IPAddress string2ip(const char *str);
+
+
+    
 };
 
 #endif // _IFT_TOOLS_H_2
