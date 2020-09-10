@@ -66,9 +66,9 @@ void ift::ip2string(IPAddress address, String &ret)
 /*!
 *  @section Tools -> Convert : String to IPV4
 *  @brief  void string2ip(IPAddress address)
-*  @param  addr IPAddress
+*  @param  addr IPAddress type byte
 *  @param  str String value
-*  @return String
+*  @return byte array to pointer addr
 */
 void ift::string2ip(byte *addr, String str)
 {
@@ -77,7 +77,6 @@ void ift::string2ip(byte *addr, String str)
 
     IPAddress ip;
     bool i;
-
     i = ip.fromString(str);
     if (i)
     {
@@ -90,21 +89,21 @@ void ift::string2ip(byte *addr, String str)
 
 /*!
 *  @section Tools -> Convert : String to IPV4
-*  @brief  IPAddress string2ip(IPAddress address)
-*  @param  addr IPAddress
-*  @param  str String value
-*  @return String
+*  @brief  IPAddress string2ip(String str)
+*  @param  str String value IP Address
+*  @return IPAddress
 */
 IPAddress ift::string2ip(String str)
 {
     IPAddress ret(explode(str, '.', 0).toInt(), explode(str, '.', 1).toInt(), explode(str, '.', 2).toInt(), explode(str, '.', 3).toInt());
     return ret;
 }
+
 IPAddress ift::string2ip(const char *str)
 {
-    IPAddress ret(explode(str, '.', 0).toInt(), explode(str, '.', 1).toInt(), explode(str, '.', 2).toInt(), explode(str, '.', 3).toInt());
-    return ret;
+    return string2ip(String(str));
 }
+
 
 /*!
 *  @section Tools -> URL Decode
