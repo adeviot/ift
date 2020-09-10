@@ -22,8 +22,11 @@ public:
     IPAddress string2ip(String str);
     IPAddress string2ip(const char *str);
 
+    String urlDecode(String &str);
+    String urlEncode(String &str);
 
-    
+    String UnicodeToUTF8(String &dat);
+    void UnicodeToUTF8(String &dat, String &ret);
 };
 
 #endif // _IFT_TOOLS_H_2
